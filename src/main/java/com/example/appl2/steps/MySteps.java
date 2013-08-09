@@ -22,16 +22,13 @@ public class MySteps
 	private ExamplesTable resultTable;
 
 	@Given("a table of factors:$factors")
-	public void factors(ExamplesTable inputTable)
-	{
-		ExamplesTable inputData = inputTable;
+	public void factors(ExamplesTable inputTable) {
+		inputData = inputTable;
 	}
 
 	@When("math is done")
-	public void math()
-	{
-		for(Parameters parameter : inputData.getRowsAsParameters())
-		{
+	public void math() {
+		for (Parameters parameter : inputData.getRowsAsParameters()) {
 			int first = parameter.valueAs("first", Integer.class);
 			int second = parameter.valueAs("second", Integer.class);
 			HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
@@ -44,6 +41,7 @@ public class MySteps
 	@Then("I should have:$resultTable")
 	public void results(ExamplesTable table)
 	{
+		resultTable = table;
 		OutcomesTable expected = new OutcomesTable();
 		for (int i = 0; i < results.size();i++)
 		{
